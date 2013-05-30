@@ -1,8 +1,6 @@
 def calcIt
-  
   calculateAgain = "y"
   while calculateAgain == "y"
-
     puts "Type 'basic' for basic calculations and 'advanced' for advanced calculations"
     calcType = gets.chomp.downcase
       if calcType == "basic"
@@ -14,19 +12,17 @@ def calcIt
         secondNumber = gets.chomp.to_i
           if basicFunction == "Add"
             puts firstNumber + secondNumber
-          end
-          if basicFunction == "Subtract"
+          elsif basicFunction == "Subtract"
             puts firstNumber - secondNumber
-          end
-          if basicFunction == "Multiply"
+          elsif basicFunction == "Multiply"
             puts firstNumber * secondNumber
-          end
-          if basicFunction == "Divide"
+          elsif basicFunction == "Divide"
             puts firstNumber / secondNumber
+          else
+            puts "Invalid choice. Try again? (y/n)"
+            calculateAgain = gets.chomp!
           end 
-          
-      end
-      if calcType == "advanced"
+      elsif calcType == "advanced"
         puts "Would you like to work with Exponents or SquareRoots?"
         advancedFunction = gets.chomp.downcase
           if advancedFunction == "exponents"
@@ -35,13 +31,18 @@ def calcIt
             puts "What is your power number?"
             powerNumber = gets.chomp.to_i
             puts baseNumber**powerNumber
-          end
-          if advancedFunction == "squareroots"
+          elsif advancedFunction == "squareroots"
             puts "What is your number?"
             squareNumber = gets.chomp.to_i
             puts Math.sqrt(squareNumber)
+          else
+            puts "Invalid choice. Try again?? (y/n)"
+            calculateAgain = gets.chomp!
           end
-        end
+      else
+        puts "Invalid choice. Try again? (y/n)"
+        calculateAgain = gets.chomp!
+      end
     puts "Another calculation? (y/n)"
     calculateAgain = gets.chomp!
   end
